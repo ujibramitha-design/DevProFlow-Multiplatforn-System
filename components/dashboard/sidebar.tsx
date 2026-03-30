@@ -22,6 +22,7 @@ import { Logo3D } from "@/components/dashboard/logo-3d"
 import { useAuth } from "@/components/auth/auth-provider"
 
 const menuItems = [
+  { icon: LayoutDashboard, label: "Main Dashboard", route: "/dashboard" },
   { icon: LayoutDashboard, label: "Executive Vision", route: "/executive" },
   { icon: Scale, label: "Legal Tracking", route: "/legal" },
   { icon: Banknote, label: "Finance", route: "/finance" },

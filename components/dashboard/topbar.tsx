@@ -1,18 +1,38 @@
 "use client"
 
 import { Search, Bell, Command, MessageSquare } from "lucide-react"
+import { usePathname } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ThemeToggle } from "@/components/dashboard/theme-toggle"
 
 export function DashboardTopbar() {
+  const pathname = usePathname()
+
+  // Breadcrumb mapping based on route
+  const breadcrumbMap: { [key: string]: { primary: string; secondary: string } } = {
+    "/dashboard": { primary: "Dashboard", secondary: "Ringkasan Sistem" },
+    "/executive": { primary: "Executive", secondary: "Vision & Analytics" },
+    "/legal": { primary: "Legal", secondary: "Tracking & Compliance" },
+    "/finance": { primary: "Finance", secondary: "Management Hub" },
+    "/sales": { primary: "Sales", secondary: "Inventory & Reporting" },
+    "/master": { primary: "Master Data", secondary: "Document Control" },
+    "/engineering": { primary: "Engineering", secondary: "Construction Tracking" },
+    "/estate": { primary: "Estate", secondary: "BAST Management" },
+    "/bank": { primary: "Bank", secondary: "Portal Integration" },
+    "/notary": { primary: "Notary", secondary: "Portal Services" },
+    "/settings": { primary: "Settings", secondary: "System Configuration" },
+  }
+
+  const breadcrumb = breadcrumbMap[pathname] || { primary: "Dashboard", secondary: "Ringkasan" }
+
   return (
     <header className="flex h-[64px] items-center justify-between bg-card/50 px-8 backdrop-blur-xl border-b border-border/30">
       {/* Left: Breadcrumb */}
       <div className="flex items-center gap-4">
         <nav className="flex items-center gap-1.5" aria-label="Breadcrumb">
-          <span className="text-[13px] font-bold text-foreground">Dashboard</span>
+          <span className="text-[13px] font-bold text-foreground">{breadcrumb.primary}</span>
           <span className="text-muted-foreground/40 select-none">/</span>
-          <span className="text-[13px] font-medium text-muted-foreground">Ringkasan</span>
+          <span className="text-[13px] font-medium text-muted-foreground">{breadcrumb.secondary}</span>
         </nav>
       </div>
 
