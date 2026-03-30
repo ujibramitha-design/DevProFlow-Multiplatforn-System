@@ -36,7 +36,7 @@ export default function LoginPage() {
     
     if (success) {
       console.log('✅ Login successful, redirecting to dashboard...')
-      router.push('/')
+      router.push('/dashboard')
     } else {
       setError('Login gagal. Silakan coba lagi.')
     }
