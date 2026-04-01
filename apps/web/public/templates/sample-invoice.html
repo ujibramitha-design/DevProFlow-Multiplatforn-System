@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Pembayaran</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 11pt;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        .company-info h1 {
+            margin: 0;
+            color: #2563eb;
+            font-size: 24pt;
+            font-weight: bold;
+        }
+        
+        .company-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .invoice-details {
+            text-align: right;
+        }
+        
+        .invoice-details h2 {
+            margin: 0;
+            color: #2563eb;
+            font-size: 20pt;
+        }
+        
+        .invoice-number {
+            font-size: 14pt;
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .client-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .client-info h3 {
+            margin: 0 0 10px 0;
+            color: #2563eb;
+            font-size: 14pt;
+        }
+        
+        .info-table {
+            width: 100%;
+        }
+        
+        .info-table td {
+            padding: 5px 0;
+        }
+        
+        .info-table td:first-child {
+            width: 150px;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .items-table thead {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .items-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .items-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .items-table tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .total-section {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .total-box {
+            width: 350px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .total-row.grand-total {
+            border-top: 2px solid #2563eb;
+            border-bottom: none;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 16pt;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .payment-info {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 4px;
+        }
+        
+        .payment-info h4 {
+            margin: 0 0 10px 0;
+            color: #92400e;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 10pt;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+        
+        .bold {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <div class="company-info">
+            <h1>{{NAMA_PROPERTI}}</h1>
+            <p>Developer Properti Terpercaya</p>
+            <p>Email: info@devproflow.com | Telp: (021) 1234-5678</p>
+        </div>
+        <div class="invoice-details">
+            <h2>INVOICE</h2>
+            <p class="invoice-number">INV-{{NIK}}</p>
+            <p>Tanggal: {{TANGGAL}}</p>
+        </div>
+    </div>
+    
+    <div class="client-info">
+        <h3>Informasi Pelanggan</h3>
+        <table class="info-table">
+            <tr>
+                <td>Nama Lengkap</td>
+                <td>: <span class="bold">{{NAMA_NASABAH}}</span></td>
+            </tr>
+            <tr>
+                <td>NIK</td>
+                <td>: {{NIK}}</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>: {{ALAMAT}}</td>
+            </tr>
+            <tr>
+                <td>No. Telepon</td>
+                <td>: {{NO_TELP}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>: {{EMAIL}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>Deskripsi</th>
+                <th>Spesifikasi</th>
+                <th style="text-align: right;">Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>Pembelian Unit Properti</strong><br>
+                    {{NAMA_PROPERTI}}
+                </td>
+                <td>
+                    Tipe: {{TIPE_UNIT}}<br>
+                    Blok/No: {{BLOK}}/{{NOMOR_UNIT}}<br>
+                    LT: {{LUAS_TANAH}} m² | LB: {{LUAS_BANGUNAN}} m²
+                </td>
+                <td style="text-align: right;">
+                    <strong>{{HARGA_JUAL}}</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="total-section">
+        <div class="total-box">
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span>{{HARGA_JUAL}}</span>
+            </div>
+            <div class="total-row">
+                <span>Uang Muka (DP)</span>
+                <span>- {{DP}}</span>
+            </div>
+            <div class="total-row grand-total">
+                <span>Sisa Pembayaran</span>
+                <span>{{HARGA_PROPERTI}}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="payment-info">
+        <h4>Informasi Pembayaran</h4>
+        <table class="info-table">
+            <tr>
+                <td>Bank</td>
+                <td>: {{BANK}}</td>
+            </tr>
+            <tr>
+                <td>Cicilan per Bulan</td>
+                <td>: <span class="bold">{{CICILAN}}</span></td>
+            </tr>
+            <tr>
+                <td>Tenor</td>
+                <td>: {{TENOR}} Bulan</td>
+            </tr>
+            <tr>
+                <td>Tanggal Akad</td>
+                <td>: {{TANGGAL_AKAD}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <p><strong>Terima kasih atas kepercayaan Anda!</strong></p>
+        <p>Dokumen ini dibuat secara otomatis dan sah tanpa tanda tangan</p>
+        <p>Dicetak pada: {{TANGGAL}}</p>
+    </div>
+</body>
+</html>

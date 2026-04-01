@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V6 - Berita Acara Serah Terima Dokumen</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+      line-height: 1.7;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px double #000;
+    }
+    
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .header h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-decoration: underline;
+    }
+    
+    .header p {
+      font-size: 11pt;
+      margin: 3px 0;
+    }
+    
+    .doc-number {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 11pt;
+      font-weight: bold;
+    }
+    
+    .content {
+      text-align: justify;
+      margin: 20px 0;
+    }
+    
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    .party-section {
+      margin: 25px 0;
+    }
+    
+    .party-box {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 2px solid #003d82;
+      border-radius: 5px;
+    }
+    
+    .party-title {
+      font-weight: bold;
+      font-size: 13pt;
+      color: #003d82;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    .party-data {
+      margin-left: 20px;
+    }
+    
+    .party-row {
+      display: flex;
+      margin-bottom: 8px;
+    }
+    
+    .party-label {
+      width: 180px;
+      font-weight: bold;
+    }
+    
+    .party-value {
+      flex: 1;
+    }
+    
+    .document-list {
+      margin: 25px 0;
+    }
+    
+    .document-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    
+    .document-table th,
+    .document-table td {
+      padding: 10px;
+      border: 1px solid #000;
+      text-align: left;
+    }
+    
+    .document-table th {
+      background: #003d82;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .document-table td {
+      vertical-align: top;
+    }
+    
+    .checkbox-col {
+      width: 50px;
+      text-align: center;
+    }
+    
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #000;
+      display: inline-block;
+    }
+    
+    .statement-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: #f9f9f9;
+      border: 2px solid #003d82;
+      border-radius: 5px;
+    }
+    
+    .statement-title {
+      font-weight: bold;
+      font-size: 13pt;
+      color: #003d82;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .statement-list {
+      margin: 15px 0;
+      padding-left: 25px;
+    }
+    
+    .statement-list li {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+    
+    .signature-section {
+      margin-top: 50px;
+    }
+    
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    
+    .signature-box {
+      text-align: center;
+    }
+    
+    .signature-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .signature-subtitle {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    
+    .stamp-area {
+      width: 180px;
+      height: 180px;
+      border: 2px dashed #999;
+      margin: 15px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 10pt;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .signature-name {
+      border-top: 1px solid #000;
+      padding-top: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    .signature-detail {
+      font-size: 10pt;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .witness-section {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+    }
+    
+    .witness-title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .witness-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .witness-box {
+      text-align: center;
+    }
+    
+    .witness-area {
+      height: 100px;
+      border-bottom: 1px solid #000;
+      margin: 15px 0;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+      font-size: 10pt;
+      color: #666;
+      text-align: center;
+    }
+    
+    .important-box {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+    
+    .important-box strong {
+      color: #856404;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>PT Bank Tabungan Negara (Persero) Tbk</h1>
+    <h2>BERITA ACARA SERAH TERIMA DOKUMEN</h2>
+    <p>Pra-Akad Kredit Pemilikan Rumah (KPR)</p>
+    <p>Dokumen Versi 6 - Tahun 2026</p>
+  </div>
+
+  <!-- Document Number -->
+  <div class="doc-number">
+    No. Berita Acara: BTN/BAST-DOK/{{TANGGAL}}/{{NIK}}
+  </div>
+
+  <!-- Opening -->
+  <div class="content">
+    <p>Pada hari ini, <strong>{{HARI}}</strong>, tanggal <strong>{{TANGGAL}}</strong>, bertempat di <strong>{{LOKASI_SERAH_TERIMA}}</strong>, telah dilaksanakan serah terima dokumen dalam rangka pengajuan Kredit Pemilikan Rumah (KPR) antara:</p>
+  </div>
+
+  <!-- Party Section -->
+  <div class="party-section">
+    <!-- Pihak Pertama -->
+    <div class="party-box">
+      <div class="party-title">Pihak Pertama (Debitur)</div>
+      <div class="party-data">
+        <div class="party-row">
+          <div class="party-label">Nama Lengkap</div>
+          <div class="party-value">: {{NAMA_NASABAH}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">NIK</div>
+          <div class="party-value">: {{NIK}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Tempat, Tanggal Lahir</div>
+          <div class="party-value">: {{TEMPAT_LAHIR}}, {{TANGGAL_LAHIR}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Alamat</div>
+          <div class="party-value">: {{ALAMAT}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">No. Telepon</div>
+          <div class="party-value">: {{NO_TELP}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Email</div>
+          <div class="party-value">: {{EMAIL}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pihak Kedua -->
+    <div class="party-box">
+      <div class="party-title">Pihak Kedua (Bank BTN)</div>
+      <div class="party-data">
+        <div class="party-row">
+          <div class="party-label">Nama Petugas</div>
+          <div class="party-value">: {{NAMA_PETUGAS_BANK}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Jabatan</div>
+          <div class="party-value">: {{JABATAN_PETUGAS}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Kantor Cabang</div>
+          <div class="party-value">: {{KANTOR_CABANG}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">Alamat Cabang</div>
+          <div class="party-value">: {{ALAMAT_CABANG}}</div>
+        </div>
+        <div class="party-row">
+          <div class="party-label">No. Telepon Cabang</div>
+          <div class="party-value">: {{TELP_CABANG}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <p>Pihak Pertama dengan ini menyerahkan dokumen-dokumen asli dan/atau fotocopy yang diperlukan untuk proses pengajuan KPR dengan rincian sebagai berikut:</p>
+  </div>
+
+  <!-- Document List -->
+  <div class="document-list">
+    <h3 style="margin-bottom: 15px; color: #003d82;">DAFTAR DOKUMEN YANG DISERAHKAN</h3>
+    <table class="document-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th style="width: 100px;">Jenis</th>
+          <th class="checkbox-col">✓</th>
+          <th style="width: 150px;">Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>KTP Pemohon</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>KTP Pasangan</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Kartu Keluarga (KK)</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Akta Nikah/Cerai</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>NPWP</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Slip Gaji 3 Bulan</td>
+          <td>Asli/Legalisir</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Surat Keterangan Kerja</td>
+          <td>Asli</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Rekening Koran 3 Bulan</td>
+          <td>Asli</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Sertifikat Properti (SHM/SHGB)</td>
+          <td><strong>ASLI</strong></td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td>Diserahkan ke bank</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>IMB (Izin Mendirikan Bangunan)</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>PBB 5 Tahun Terakhir</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Surat Ukur Tanah</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Akta Jual Beli (jika ada)</td>
+          <td>Fotocopy</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Foto Properti</td>
+          <td>Print/Digital</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td>Min. 6 foto</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Surat Pernyataan Debitur</td>
+          <td>Asli</td>
+          <td class="checkbox-col"><span class="checkbox"></span></td>
+          <td>Bermaterai</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Important Box -->
+  <div class="important-box">
+    <strong>⚠️ PENTING:</strong> Dokumen asli yang diserahkan (terutama Sertifikat Properti) akan disimpan oleh bank sebagai jaminan kredit dan akan dikembalikan setelah kredit lunas atau dibatalkan sesuai dengan ketentuan yang berlaku.
+  </div>
+
+  <!-- Statement Section -->
+  <div class="statement-section">
+    <div class="statement-title">PERNYATAAN DAN KESEPAKATAN</div>
+    <ol class="statement-list">
+      <li>Pihak Pertama menyatakan bahwa semua dokumen yang diserahkan adalah asli dan sah menurut hukum, serta tidak ada pemalsuan atau manipulasi data.</li>
+      <li>Pihak Pertama memberikan kuasa kepada Pihak Kedua untuk melakukan verifikasi dan pemeriksaan terhadap semua dokumen yang diserahkan.</li>
+      <li>Pihak Kedua bertanggung jawab untuk menjaga keamanan dan kerahasiaan semua dokumen yang diterima.</li>
+      <li>Pihak Kedua akan mengembalikan dokumen asli (kecuali sertifikat properti) setelah proses verifikasi selesai atau jika pengajuan kredit ditolak.</li>
+      <li>Sertifikat asli properti akan disimpan oleh bank sebagai jaminan kredit dan akan dikembalikan setelah kredit lunas atau dibatalkan.</li>
+      <li>Pihak Pertama berhak untuk meminta tanda terima atas dokumen yang diserahkan.</li>
+      <li>Apabila terdapat kekurangan dokumen, Pihak Pertama wajib melengkapi dalam waktu yang ditentukan oleh bank.</li>
+      <li>Berita Acara ini dibuat dalam rangkap 2 (dua), masing-masing untuk Pihak Pertama dan Pihak Kedua dengan kekuatan hukum yang sama.</li>
+    </ol>
+  </div>
+
+  <!-- Data Kredit -->
+  <div class="content">
+    <h3 style="margin: 25px 0 15px 0; color: #003d82;">DATA PENGAJUAN KREDIT</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px; width: 40%; font-weight: bold;">Properti yang Diajukan</td>
+        <td style="padding: 8px;">: {{NAMA_PROPERTI}} - {{TIPE_UNIT}} Blok {{BLOK}} No. {{NOMOR_UNIT}}</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px; font-weight: bold;">Harga Properti</td>
+        <td style="padding: 8px;">: {{HARGA_PROPERTI}}</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px; font-weight: bold;">Plafon Kredit yang Diajukan</td>
+        <td style="padding: 8px;">: {{PLAFON_KREDIT}}</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px; font-weight: bold;">Jangka Waktu</td>
+        <td style="padding: 8px;">: {{TENOR}} Bulan</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px; font-weight: bold;">Tanggal Pengajuan</td>
+        <td style="padding: 8px;">: {{TANGGAL}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Signature Section -->
+  <div class="signature-section">
+    <p style="text-align: justify; margin-bottom: 20px;">
+      Demikian Berita Acara Serah Terima Dokumen ini dibuat dengan sebenar-benarnya untuk dapat dipergunakan sebagaimana mestinya.
+    </p>
+    
+    <div style="text-align: right; margin: 30px 0 40px 0;">
+      <p>{{KOTA}}, {{TANGGAL}}</p>
+    </div>
+
+    <div class="signature-grid">
+      <!-- Pihak Pertama -->
+      <div class="signature-box">
+        <div class="signature-title">PIHAK PERTAMA</div>
+        <div class="signature-subtitle">Yang Menyerahkan Dokumen</div>
+        <div class="stamp-area">
+          <div>Tanda Tangan</div>
+          <div style="font-size: 9pt; margin-top: 5px;">(Materai Rp 10.000)</div>
+        </div>
+        <div class="signature-name">{{NAMA_NASABAH}}</div>
+        <div class="signature-detail">NIK: {{NIK}}</div>
+      </div>
+
+      <!-- Pihak Kedua -->
+      <div class="signature-box">
+        <div class="signature-title">PIHAK KEDUA</div>
+        <div class="signature-subtitle">Yang Menerima Dokumen</div>
+        <div class="stamp-area">
+          <div>Tanda Tangan & Stempel Bank</div>
+        </div>
+        <div class="signature-name">{{NAMA_PETUGAS_BANK}}</div>
+        <div class="signature-detail">{{JABATAN_PETUGAS}}</div>
+        <div class="signature-detail">PT Bank Tabungan Negara (Persero) Tbk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Witness Section -->
+  <div class="witness-section">
+    <div class="witness-title">MENGETAHUI / SAKSI</div>
+    <div class="witness-grid">
+      <div class="witness-box">
+        <p style="margin-bottom: 10px;">Saksi 1,</p>
+        <div class="witness-area"></div>
+        <div style="border-top: 1px solid #000; padding-top: 5px; font-weight: bold;">
+          Nama & Tanda Tangan
+        </div>
+      </div>
+      <div class="witness-box">
+        <p style="margin-bottom: 10px;">Saksi 2,</p>
+        <div class="witness-area"></div>
+        <div style="border-top: 1px solid #000; padding-top: 5px; font-weight: bold;">
+          Nama & Tanda Tangan
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Berita Acara Serah Terima Dokumen - Pra-Akad KPR</p>
+    <p>Dokumen ini bersifat resmi dan memiliki kekuatan hukum</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>

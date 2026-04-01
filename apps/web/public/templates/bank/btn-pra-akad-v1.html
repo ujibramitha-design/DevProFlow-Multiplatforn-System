@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V1 - Verifikasi Data Debitur</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px double #000;
+    }
+    
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .header h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 11pt;
+      margin: 3px 0;
+    }
+    
+    .doc-number {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 11pt;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+    }
+    
+    .section-title {
+      font-size: 13pt;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border-left: 4px solid #003d82;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    
+    .data-table td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+    
+    .data-table td:first-child {
+      width: 35%;
+      font-weight: bold;
+      background: #f9f9f9;
+    }
+    
+    .checklist {
+      margin: 15px 0;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #003d82;
+      margin-right: 12px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .signature-section {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .signature-box {
+      width: 45%;
+      text-align: center;
+    }
+    
+    .signature-box p {
+      margin-bottom: 80px;
+    }
+    
+    .signature-line {
+      border-top: 1px solid #000;
+      padding-top: 5px;
+      font-weight: bold;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+      font-size: 10pt;
+      color: #666;
+      text-align: center;
+    }
+    
+    .stamp-area {
+      width: 150px;
+      height: 150px;
+      border: 2px dashed #999;
+      margin: 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>PT Bank Tabungan Negara (Persero) Tbk</h1>
+    <h2>Formulir Verifikasi Data Debitur</h2>
+    <p>Pra-Akad Kredit Pemilikan Rumah (KPR)</p>
+    <p>Dokumen Versi 1 - Tahun 2026</p>
+  </div>
+
+  <!-- Document Number -->
+  <div class="doc-number">
+    <strong>No. Dokumen:</strong> BTN/PRA-AKAD/{{TANGGAL}}/{{NIK}}
+  </div>
+
+  <!-- Section 1: Data Pribadi Debitur -->
+  <div class="section">
+    <div class="section-title">I. DATA PRIBADI DEBITUR</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Lengkap</td>
+        <td>{{NAMA_NASABAH}}</td>
+      </tr>
+      <tr>
+        <td>Nomor Induk Kependudukan (NIK)</td>
+        <td>{{NIK}}</td>
+      </tr>
+      <tr>
+        <td>Alamat Lengkap</td>
+        <td>{{ALAMAT}}</td>
+      </tr>
+      <tr>
+        <td>Nomor Telepon</td>
+        <td>{{NO_TELP}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{EMAIL}}</td>
+      </tr>
+      <tr>
+        <td>Status Pekerjaan</td>
+        <td>{{STATUS_PEKERJAAN}}</td>
+      </tr>
+      <tr>
+        <td>Penghasilan Per Bulan</td>
+        <td>{{PENGHASILAN_BULANAN}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 2: Data Properti -->
+  <div class="section">
+    <div class="section-title">II. DATA PROPERTI YANG DIAJUKAN</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Properti/Perumahan</td>
+        <td>{{NAMA_PROPERTI}}</td>
+      </tr>
+      <tr>
+        <td>Tipe Unit</td>
+        <td>{{TIPE_UNIT}}</td>
+      </tr>
+      <tr>
+        <td>Blok / Nomor Unit</td>
+        <td>{{BLOK}} / {{NOMOR_UNIT}}</td>
+      </tr>
+      <tr>
+        <td>Luas Tanah</td>
+        <td>{{LUAS_TANAH}} m²</td>
+      </tr>
+      <tr>
+        <td>Luas Bangunan</td>
+        <td>{{LUAS_BANGUNAN}} m²</td>
+      </tr>
+      <tr>
+        <td>Harga Properti</td>
+        <td>{{HARGA_PROPERTI}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 3: Data Pengajuan Kredit -->
+  <div class="section">
+    <div class="section-title">III. DATA PENGAJUAN KREDIT</div>
+    <table class="data-table">
+      <tr>
+        <td>Harga Jual</td>
+        <td>{{HARGA_JUAL}}</td>
+      </tr>
+      <tr>
+        <td>Uang Muka (DP)</td>
+        <td>{{DP}}</td>
+      </tr>
+      <tr>
+        <td>Plafon Kredit</td>
+        <td>{{PLAFON_KREDIT}}</td>
+      </tr>
+      <tr>
+        <td>Jangka Waktu (Tenor)</td>
+        <td>{{TENOR}} Bulan</td>
+      </tr>
+      <tr>
+        <td>Estimasi Cicilan Per Bulan</td>
+        <td>{{CICILAN}}</td>
+      </tr>
+      <tr>
+        <td>Suku Bunga</td>
+        <td>{{SUKU_BUNGA}}% per tahun</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 4: Checklist Dokumen -->
+  <div class="section">
+    <div class="section-title">IV. CHECKLIST DOKUMEN YANG HARUS DILENGKAPI</div>
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Fotocopy KTP Suami & Istri</strong><br>
+          <small>KTP yang masih berlaku, legalisir jika diperlukan</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Fotocopy Kartu Keluarga (KK)</strong><br>
+          <small>KK terbaru yang mencantumkan seluruh anggota keluarga</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Fotocopy NPWP</strong><br>
+          <small>NPWP pribadi yang masih aktif</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Slip Gaji 3 Bulan Terakhir</strong><br>
+          <small>Slip gaji asli atau fotocopy yang dilegalisir perusahaan</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Surat Keterangan Kerja (SKK)</strong><br>
+          <small>Dari perusahaan tempat bekerja, mencantumkan masa kerja dan jabatan</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Rekening Koran 3 Bulan Terakhir</strong><br>
+          <small>Rekening tabungan atau giro yang menunjukkan mutasi transaksi</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Fotocopy Akta Nikah / Akta Cerai</strong><br>
+          <small>Sesuai status pernikahan saat ini</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>PBB Tahun Terakhir (jika ada properti lain)</strong><br>
+          <small>Bukti pembayaran PBB untuk properti yang dimiliki</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Catatan Verifikasi -->
+  <div class="section">
+    <div class="section-title">V. CATATAN VERIFIKASI PETUGAS BANK</div>
+    <table class="data-table">
+      <tr>
+        <td>Status Verifikasi</td>
+        <td style="height: 60px;"></td>
+      </tr>
+      <tr>
+        <td>Catatan Khusus</td>
+        <td style="height: 80px;"></td>
+      </tr>
+      <tr>
+        <td>Tanggal Verifikasi</td>
+        <td>{{TANGGAL}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Signature Section -->
+  <div class="signature-section">
+    <div class="signature-box">
+      <p>Debitur,</p>
+      <div class="stamp-area">Tanda Tangan</div>
+      <div class="signature-line">{{NAMA_NASABAH}}</div>
+    </div>
+    <div class="signature-box">
+      <p>Petugas Verifikasi BTN,</p>
+      <div class="stamp-area">Tanda Tangan & Stempel</div>
+      <div class="signature-line">Nama & Jabatan</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Dokumen ini adalah bagian dari proses Pra-Akad KPR dan bersifat rahasia</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>
