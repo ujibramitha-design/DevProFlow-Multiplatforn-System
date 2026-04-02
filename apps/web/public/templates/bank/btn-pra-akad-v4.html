@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V4 - Memo Internal Bank</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #003d82;
+    }
+    
+    .header-left h1 {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #003d82;
+      margin-bottom: 5px;
+    }
+    
+    .header-left p {
+      font-size: 10pt;
+      color: #666;
+    }
+    
+    .header-right {
+      text-align: right;
+    }
+    
+    .memo-label {
+      background: #003d82;
+      color: white;
+      padding: 8px 20px;
+      font-size: 13pt;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    
+    .doc-info {
+      font-size: 10pt;
+    }
+    
+    .memo-details {
+      margin: 20px 0;
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #003d82;
+    }
+    
+    .memo-row {
+      display: flex;
+      margin-bottom: 8px;
+    }
+    
+    .memo-row-label {
+      width: 120px;
+      font-weight: bold;
+    }
+    
+    .memo-row-value {
+      flex: 1;
+    }
+    
+    .section {
+      margin: 25px 0;
+    }
+    
+    .section-title {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      background: #e8f4f8;
+      border-left: 4px solid #003d82;
+      color: #003d82;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    
+    .data-table th {
+      background: #003d82;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .data-table td:first-child {
+      font-weight: bold;
+      background: #f9f9f9;
+      width: 35%;
+    }
+    
+    .analysis-box {
+      background: #fff9e6;
+      border: 2px solid #ffc107;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    
+    .recommendation-box {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    
+    .risk-indicator {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 10pt;
+    }
+    
+    .risk-low {
+      background: #4caf50;
+      color: white;
+    }
+    
+    .risk-medium {
+      background: #ffc107;
+      color: #000;
+    }
+    
+    .risk-high {
+      background: #f44336;
+      color: white;
+    }
+    
+    .approval-section {
+      margin-top: 40px;
+      border-top: 2px solid #003d82;
+      padding-top: 20px;
+    }
+    
+    .approval-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .approval-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    .approval-box h4 {
+      margin-bottom: 10px;
+      color: #003d82;
+    }
+    
+    .signature-area {
+      height: 80px;
+      border-bottom: 1px solid #000;
+      margin: 15px 0;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+      font-size: 9pt;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>PT BANK TABUNGAN NEGARA (Persero) Tbk</h1>
+      <p>Kantor Cabang: {{KANTOR_CABANG}}</p>
+      <p>Alamat: {{ALAMAT_CABANG}}</p>
+    </div>
+    <div class="header-right">
+      <div class="memo-label">MEMO INTERNAL</div>
+      <div class="doc-info">
+        <p><strong>No:</strong> {{NOMOR_MEMO}}</p>
+        <p><strong>Tanggal:</strong> {{TANGGAL}}</p>
+        <p><strong>Hal:</strong> Analisis Kredit</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memo Details -->
+  <div class="memo-details">
+    <div class="memo-row">
+      <div class="memo-row-label">Kepada</div>
+      <div class="memo-row-value">: Kepala Cabang / Komite Kredit</div>
+    </div>
+    <div class="memo-row">
+      <div class="memo-row-label">Dari</div>
+      <div class="memo-row-value">: Account Officer KPR</div>
+    </div>
+    <div class="memo-row">
+      <div class="memo-row-label">Perihal</div>
+      <div class="memo-row-value">: Permohonan Persetujuan Kredit Pemilikan Rumah (KPR)</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Data Pemohon -->
+  <div class="section">
+    <div class="section-title">I. DATA PEMOHON KREDIT</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Lengkap</td>
+        <td>{{NAMA_NASABAH}}</td>
+      </tr>
+      <tr>
+        <td>NIK</td>
+        <td>{{NIK}}</td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>{{ALAMAT}}</td>
+      </tr>
+      <tr>
+        <td>Pekerjaan</td>
+        <td>{{PEKERJAAN}}</td>
+      </tr>
+      <tr>
+        <td>Penghasilan Per Bulan</td>
+        <td>{{PENGHASILAN_BULANAN}}</td>
+      </tr>
+      <tr>
+        <td>Status Pernikahan</td>
+        <td>{{STATUS_PERNIKAHAN}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 2: Data Properti & Kredit -->
+  <div class="section">
+    <div class="section-title">II. DATA PROPERTI & PENGAJUAN KREDIT</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Properti</td>
+        <td>{{NAMA_PROPERTI}}</td>
+      </tr>
+      <tr>
+        <td>Tipe / Blok / Nomor</td>
+        <td>{{TIPE_UNIT}} / {{BLOK}} / {{NOMOR_UNIT}}</td>
+      </tr>
+      <tr>
+        <td>Luas Tanah / Bangunan</td>
+        <td>{{LUAS_TANAH}} m² / {{LUAS_BANGUNAN}} m²</td>
+      </tr>
+      <tr>
+        <td>Harga Jual Properti</td>
+        <td>{{HARGA_JUAL}}</td>
+      </tr>
+      <tr>
+        <td>Uang Muka (DP)</td>
+        <td>{{DP}} ({{PERSENTASE_DP}}%)</td>
+      </tr>
+      <tr>
+        <td>Plafon Kredit Diajukan</td>
+        <td>{{PLAFON_KREDIT}}</td>
+      </tr>
+      <tr>
+        <td>Jangka Waktu</td>
+        <td>{{TENOR}} Bulan ({{TAHUN_TENOR}} Tahun)</td>
+      </tr>
+      <tr>
+        <td>Suku Bunga</td>
+        <td>{{SUKU_BUNGA}}% per tahun</td>
+      </tr>
+      <tr>
+        <td>Estimasi Cicilan</td>
+        <td>{{CICILAN}} per bulan</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 3: Analisis Kelayakan -->
+  <div class="section">
+    <div class="section-title">III. ANALISIS KELAYAKAN KREDIT</div>
+    
+    <h4 style="margin: 15px 0 10px 0; font-size: 11pt;">A. Analisis Kemampuan Bayar (Debt Service Ratio)</h4>
+    <table class="data-table">
+      <tr>
+        <td>Penghasilan Bersih Per Bulan</td>
+        <td>{{PENGHASILAN_BERSIH}}</td>
+      </tr>
+      <tr>
+        <td>Cicilan KPR yang Diajukan</td>
+        <td>{{CICILAN}}</td>
+      </tr>
+      <tr>
+        <td>Cicilan Kredit Lain (jika ada)</td>
+        <td>{{CICILAN_LAIN}}</td>
+      </tr>
+      <tr>
+        <td>Total Cicilan Per Bulan</td>
+        <td>{{TOTAL_CICILAN}}</td>
+      </tr>
+      <tr>
+        <td><strong>Debt Service Ratio (DSR)</strong></td>
+        <td><strong>{{DSR_PERCENTAGE}}%</strong> <span class="risk-indicator {{DSR_STATUS_CLASS}}">{{DSR_STATUS}}</span></td>
+      </tr>
+    </table>
+
+    <h4 style="margin: 20px 0 10px 0; font-size: 11pt;">B. Analisis Jaminan (Loan to Value)</h4>
+    <table class="data-table">
+      <tr>
+        <td>Nilai Pasar Properti</td>
+        <td>{{NILAI_PASAR}}</td>
+      </tr>
+      <tr>
+        <td>Nilai Taksasi Bank</td>
+        <td>{{NILAI_TAKSASI}}</td>
+      </tr>
+      <tr>
+        <td>Plafon Kredit</td>
+        <td>{{PLAFON_KREDIT}}</td>
+      </tr>
+      <tr>
+        <td><strong>Loan to Value (LTV)</strong></td>
+        <td><strong>{{LTV_PERCENTAGE}}%</strong> <span class="risk-indicator {{LTV_STATUS_CLASS}}">{{LTV_STATUS}}</span></td>
+      </tr>
+    </table>
+
+    <h4 style="margin: 20px 0 10px 0; font-size: 11pt;">C. Hasil BI Checking / SLIK OJK</h4>
+    <table class="data-table">
+      <tr>
+        <td>Skor Kredit</td>
+        <td>{{SKOR_KREDIT}}</td>
+      </tr>
+      <tr>
+        <td>Kolektibilitas</td>
+        <td><span class="risk-indicator {{KOLEKTIBILITAS_CLASS}}">{{KOLEKTIBILITAS}}</span></td>
+      </tr>
+      <tr>
+        <td>Riwayat Kredit Macet</td>
+        <td>{{RIWAYAT_MACET}}</td>
+      </tr>
+      <tr>
+        <td>Total Kredit Berjalan</td>
+        <td>{{TOTAL_KREDIT_BERJALAN}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Analysis Box -->
+  <div class="analysis-box">
+    <h4 style="margin-bottom: 10px; color: #ff6f00;">📊 KESIMPULAN ANALISIS:</h4>
+    <p style="text-align: justify;">
+      Berdasarkan analisis kelayakan kredit yang telah dilakukan, pemohon memiliki:
+    </p>
+    <ul style="margin: 10px 0 10px 20px;">
+      <li>DSR sebesar <strong>{{DSR_PERCENTAGE}}%</strong> ({{DSR_KETERANGAN}})</li>
+      <li>LTV sebesar <strong>{{LTV_PERCENTAGE}}%</strong> ({{LTV_KETERANGAN}})</li>
+      <li>Kolektibilitas <strong>{{KOLEKTIBILITAS}}</strong> ({{KOLEKTIBILITAS_KETERANGAN}})</li>
+      <li>Kelengkapan dokumen: <strong>{{KELENGKAPAN_DOKUMEN}}</strong></li>
+    </ul>
+    <p style="margin-top: 10px;"><strong>Tingkat Risiko Kredit:</strong> <span class="risk-indicator {{RISK_LEVEL_CLASS}}">{{RISK_LEVEL}}</span></p>
+  </div>
+
+  <!-- Recommendation Box -->
+  <div class="recommendation-box">
+    <h4 style="margin-bottom: 10px; color: #2e7d32;">✅ REKOMENDASI ACCOUNT OFFICER:</h4>
+    <p style="text-align: justify; margin-bottom: 10px;">
+      {{REKOMENDASI_AO}}
+    </p>
+    <table style="width: 100%; margin-top: 10px;">
+      <tr>
+        <td style="width: 50%; padding-right: 10px;">
+          <strong>Plafon Direkomendasikan:</strong><br>
+          {{PLAFON_REKOMENDASI}}
+        </td>
+        <td style="width: 50%;">
+          <strong>Tenor Direkomendasikan:</strong><br>
+          {{TENOR_REKOMENDASI}} Bulan
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Approval Section -->
+  <div class="approval-section">
+    <h3 style="text-align: center; margin-bottom: 20px; color: #003d82;">PERSETUJUAN</h3>
+    <div class="approval-grid">
+      <div class="approval-box">
+        <h4>Diajukan Oleh:</h4>
+        <p style="font-size: 10pt; margin: 5px 0;">Account Officer KPR</p>
+        <div class="signature-area"></div>
+        <p style="font-weight: bold;">{{NAMA_AO}}</p>
+        <p style="font-size: 10pt;">Tanggal: {{TANGGAL}}</p>
+      </div>
+      <div class="approval-box">
+        <h4>Diperiksa Oleh:</h4>
+        <p style="font-size: 10pt; margin: 5px 0;">Supervisor KPR</p>
+        <div class="signature-area"></div>
+        <p style="font-weight: bold;">_________________</p>
+        <p style="font-size: 10pt;">Tanggal: _________</p>
+      </div>
+      <div class="approval-box">
+        <h4>Disetujui Oleh:</h4>
+        <p style="font-size: 10pt; margin: 5px 0;">Kepala Cabang</p>
+        <div class="signature-area"></div>
+        <p style="font-weight: bold;">_________________</p>
+        <p style="font-size: 10pt;">Tanggal: _________</p>
+      </div>
+      <div class="approval-box">
+        <h4>Keputusan Komite Kredit:</h4>
+        <p style="font-size: 10pt; margin: 5px 0;">☐ Disetujui &nbsp; ☐ Ditolak &nbsp; ☐ Revisi</p>
+        <div class="signature-area"></div>
+        <p style="font-weight: bold;">_________________</p>
+        <p style="font-size: 10pt;">Tanggal: _________</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Dokumen Internal - Bersifat Rahasia dan Terbatas</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>

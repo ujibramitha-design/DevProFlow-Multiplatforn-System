@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V2 - Dokumen Jaminan</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px double #000;
+    }
+    
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .header h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 11pt;
+      margin: 3px 0;
+    }
+    
+    .doc-number {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 11pt;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+    }
+    
+    .section-title {
+      font-size: 13pt;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border-left: 4px solid #003d82;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    
+    .data-table td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+    
+    .data-table td:first-child {
+      width: 35%;
+      font-weight: bold;
+      background: #f9f9f9;
+    }
+    
+    .info-box {
+      background: #fff9e6;
+      border: 2px solid #ffc107;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    
+    .info-box strong {
+      color: #ff6f00;
+    }
+    
+    .checklist {
+      margin: 15px 0;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #003d82;
+      margin-right: 12px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .signature-section {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .signature-box {
+      width: 45%;
+      text-align: center;
+    }
+    
+    .signature-box p {
+      margin-bottom: 80px;
+    }
+    
+    .signature-line {
+      border-top: 1px solid #000;
+      padding-top: 5px;
+      font-weight: bold;
+    }
+    
+    .stamp-area {
+      width: 150px;
+      height: 150px;
+      border: 2px dashed #999;
+      margin: 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 10pt;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+      font-size: 10pt;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>PT Bank Tabungan Negara (Persero) Tbk</h1>
+    <h2>Dokumen Jaminan Kredit</h2>
+    <p>Pra-Akad Kredit Pemilikan Rumah (KPR)</p>
+    <p>Dokumen Versi 2 - Tahun 2026</p>
+  </div>
+
+  <!-- Document Number -->
+  <div class="doc-number">
+    <strong>No. Dokumen:</strong> BTN/JAMINAN/{{TANGGAL}}/{{NIK}}
+  </div>
+
+  <!-- Section 1: Data Debitur -->
+  <div class="section">
+    <div class="section-title">I. DATA DEBITUR</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Lengkap</td>
+        <td>{{NAMA_NASABAH}}</td>
+      </tr>
+      <tr>
+        <td>NIK</td>
+        <td>{{NIK}}</td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>{{ALAMAT}}</td>
+      </tr>
+      <tr>
+        <td>No. Telepon</td>
+        <td>{{NO_TELP}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 2: Data Jaminan Properti -->
+  <div class="section">
+    <div class="section-title">II. DATA JAMINAN PROPERTI</div>
+    <table class="data-table">
+      <tr>
+        <td>Nama Properti</td>
+        <td>{{NAMA_PROPERTI}}</td>
+      </tr>
+      <tr>
+        <td>Lokasi Properti</td>
+        <td>{{LOKASI_PROPERTI}}</td>
+      </tr>
+      <tr>
+        <td>Tipe Unit</td>
+        <td>{{TIPE_UNIT}}</td>
+      </tr>
+      <tr>
+        <td>Blok / Nomor</td>
+        <td>{{BLOK}} / {{NOMOR_UNIT}}</td>
+      </tr>
+      <tr>
+        <td>Luas Tanah</td>
+        <td>{{LUAS_TANAH}} m²</td>
+      </tr>
+      <tr>
+        <td>Luas Bangunan</td>
+        <td>{{LUAS_BANGUNAN}} m²</td>
+      </tr>
+      <tr>
+        <td>Nilai Jaminan</td>
+        <td>{{HARGA_PROPERTI}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Info Box -->
+  <div class="info-box">
+    <strong>PENTING:</strong> Properti yang dijadikan jaminan harus memenuhi syarat:
+    <ul style="margin-left: 20px; margin-top: 10px;">
+      <li>Memiliki sertifikat yang sah (SHM/SHGB/Strata Title)</li>
+      <li>Bebas dari sengketa hukum</li>
+      <li>Tidak dalam status jaminan di bank lain</li>
+      <li>Lokasi sesuai dengan ketentuan bank</li>
+    </ul>
+  </div>
+
+  <!-- Section 3: Dokumen Jaminan yang Harus Diserahkan -->
+  <div class="section">
+    <div class="section-title">III. DOKUMEN JAMINAN YANG HARUS DISERAHKAN</div>
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Sertifikat Asli Properti</strong><br>
+          <small>SHM (Sertifikat Hak Milik) atau SHGB (Sertifikat Hak Guna Bangunan) asli</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>IMB (Izin Mendirikan Bangunan)</strong><br>
+          <small>IMB asli atau fotocopy yang dilegalisir</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>PBB (Pajak Bumi dan Bangunan) 5 Tahun Terakhir</strong><br>
+          <small>Bukti pembayaran PBB yang sudah lunas</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Surat Keterangan Tidak Sengketa</strong><br>
+          <small>Dari kelurahan/desa setempat</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Surat Pernyataan Tidak Dijaminkan</strong><br>
+          <small>Bermaterai, menyatakan properti tidak dijaminkan di tempat lain</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Akta Jual Beli (AJB)</strong><br>
+          <small>Jika properti sudah dibeli sebelumnya</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Surat Ukur Tanah</strong><br>
+          <small>Dari BPN (Badan Pertanahan Nasional)</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Denah Lokasi Properti</strong><br>
+          <small>Peta lokasi yang jelas dan detail</small>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Foto Properti</strong><br>
+          <small>Foto tampak depan, samping, dan dalam properti (minimal 6 foto)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Hasil Penilaian Jaminan -->
+  <div class="section">
+    <div class="section-title">IV. HASIL PENILAIAN JAMINAN (Diisi oleh Appraisal Bank)</div>
+    <table class="data-table">
+      <tr>
+        <td>Nilai Pasar Properti</td>
+        <td style="height: 40px;"></td>
+      </tr>
+      <tr>
+        <td>Nilai Taksasi Bank</td>
+        <td style="height: 40px;"></td>
+      </tr>
+      <tr>
+        <td>Loan to Value (LTV)</td>
+        <td style="height: 40px;"></td>
+      </tr>
+      <tr>
+        <td>Maksimal Kredit yang Disetujui</td>
+        <td style="height: 40px;"></td>
+      </tr>
+      <tr>
+        <td>Catatan Appraisal</td>
+        <td style="height: 80px;"></td>
+      </tr>
+      <tr>
+        <td>Tanggal Penilaian</td>
+        <td>{{TANGGAL}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 5: Pernyataan Debitur -->
+  <div class="section">
+    <div class="section-title">V. PERNYATAAN DEBITUR</div>
+    <p style="text-align: justify; margin: 15px 0;">
+      Dengan ini saya menyatakan bahwa:
+    </p>
+    <ol style="margin-left: 30px; text-align: justify;">
+      <li style="margin-bottom: 10px;">Properti yang dijadikan jaminan adalah milik saya sendiri dan tidak dalam sengketa dengan pihak manapun.</li>
+      <li style="margin-bottom: 10px;">Properti tersebut tidak sedang dijaminkan di bank atau lembaga keuangan lain.</li>
+      <li style="margin-bottom: 10px;">Semua dokumen yang saya serahkan adalah asli dan sah menurut hukum.</li>
+      <li style="margin-bottom: 10px;">Saya bersedia untuk dilakukan penilaian (appraisal) oleh pihak bank.</li>
+      <li style="margin-bottom: 10px;">Saya menyetujui untuk menyerahkan sertifikat asli kepada bank sebagai jaminan kredit.</li>
+    </ol>
+  </div>
+
+  <!-- Signature Section -->
+  <div class="signature-section">
+    <div class="signature-box">
+      <p>Debitur,</p>
+      <div class="stamp-area">Tanda Tangan<br>& Materai 10.000</div>
+      <div class="signature-line">{{NAMA_NASABAH}}</div>
+    </div>
+    <div class="signature-box">
+      <p>Petugas Appraisal BTN,</p>
+      <div class="stamp-area">Tanda Tangan & Stempel</div>
+      <div class="signature-line">Nama & Jabatan</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Dokumen ini adalah bagian dari proses Pra-Akad KPR dan bersifat rahasia</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "@devproflow/mobile",
+  "version": "0.0.0",
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "@capacitor/android": "latest",
+    "@devproflow/ui": "workspace:*",
+    "@devproflow/database": "workspace:*"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest"
+  }
+}

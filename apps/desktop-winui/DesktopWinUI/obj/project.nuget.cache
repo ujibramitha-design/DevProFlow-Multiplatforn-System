@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "YztsBzUjGX4=",
+  "success": true,
+  "projectFilePath": "D:\\Program Project APK WEB CRM\\Belajar_Android\\DevProFlow-Enterprise\\apps\\desktop-winui\\DesktopWinUI\\DesktopWinUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.1\\microsoft.windows.sdk.buildtools.10.0.22621.1.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.windowsappsdk\\1.4.231219000\\microsoft.windowsappsdk.1.4.231219000.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512",
+    "C:\\Users\\Mojavee\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.55\\microsoft.windows.sdk.net.ref.10.0.19041.55.nupkg.sha512"
+  ],
+  "logs": []
+}

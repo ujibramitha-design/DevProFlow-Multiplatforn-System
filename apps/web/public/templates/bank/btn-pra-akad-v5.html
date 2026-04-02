@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V5 - Checklist Berkas</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 20px;
+      background: linear-gradient(135deg, #003d82 0%, #0066cc 100%);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .header h2 {
+      font-size: 13pt;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+    
+    .header p {
+      font-size: 10pt;
+      opacity: 0.9;
+    }
+    
+    .doc-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: #f5f5f5;
+      border-left: 4px solid #003d82;
+    }
+    
+    .doc-info-item {
+      font-size: 10pt;
+    }
+    
+    .doc-info-item strong {
+      color: #003d82;
+    }
+    
+    .applicant-info {
+      margin-bottom: 25px;
+      padding: 15px;
+      background: #e8f4f8;
+      border-radius: 5px;
+    }
+    
+    .applicant-info h3 {
+      font-size: 12pt;
+      color: #003d82;
+      margin-bottom: 10px;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    .info-item {
+      font-size: 10pt;
+    }
+    
+    .info-label {
+      font-weight: bold;
+      color: #666;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+    }
+    
+    .section-title {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #003d82;
+      color: white;
+      border-radius: 5px;
+    }
+    
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    
+    .checklist-table thead {
+      background: #f0f0f0;
+    }
+    
+    .checklist-table th,
+    .checklist-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    
+    .checklist-table th {
+      font-weight: bold;
+      font-size: 10pt;
+      color: #003d82;
+    }
+    
+    .checklist-table td {
+      font-size: 10pt;
+    }
+    
+    .checkbox-cell {
+      width: 60px;
+      text-align: center;
+    }
+    
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #003d82;
+      display: inline-block;
+      border-radius: 3px;
+    }
+    
+    .status-cell {
+      width: 100px;
+      text-align: center;
+    }
+    
+    .notes-cell {
+      width: 150px;
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    .category-header {
+      background: #e3f2fd !important;
+      font-weight: bold;
+      color: #003d82;
+    }
+    
+    .summary-box {
+      margin: 25px 0;
+      padding: 15px;
+      background: #fff9e6;
+      border: 2px solid #ffc107;
+      border-radius: 5px;
+    }
+    
+    .summary-box h4 {
+      color: #ff6f00;
+      margin-bottom: 10px;
+    }
+    
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .summary-item {
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    
+    .summary-number {
+      font-size: 20pt;
+      font-weight: bold;
+      color: #003d82;
+    }
+    
+    .summary-label {
+      font-size: 9pt;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .signature-section {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .signature-box {
+      text-align: center;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    .signature-box h4 {
+      font-size: 10pt;
+      margin-bottom: 10px;
+      color: #003d82;
+    }
+    
+    .signature-area {
+      height: 80px;
+      border-bottom: 1px solid #000;
+      margin: 15px 0;
+    }
+    
+    .signature-name {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    
+    .signature-date {
+      font-size: 9pt;
+      color: #666;
+      margin-top: 3px;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 2px solid #003d82;
+      font-size: 9pt;
+      color: #666;
+      text-align: center;
+    }
+    
+    .important-note {
+      background: #ffebee;
+      border: 2px solid #f44336;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 5px;
+      font-size: 10pt;
+    }
+    
+    .important-note strong {
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>PT BANK TABUNGAN NEGARA (Persero) Tbk</h1>
+    <h2>CHECKLIST KELENGKAPAN BERKAS KPR</h2>
+    <p>Pra-Akad Kredit Pemilikan Rumah - Dokumen V5</p>
+  </div>
+
+  <!-- Document Info -->
+  <div class="doc-info">
+    <div class="doc-info-item">
+      <strong>No. Checklist:</strong> BTN/CL/{{TANGGAL}}/{{NIK}}
+    </div>
+    <div class="doc-info-item">
+      <strong>Tanggal:</strong> {{TANGGAL}}
+    </div>
+    <div class="doc-info-item">
+      <strong>Cabang:</strong> {{KANTOR_CABANG}}
+    </div>
+  </div>
+
+  <!-- Applicant Info -->
+  <div class="applicant-info">
+    <h3>📋 DATA PEMOHON</h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">Nama:</span> {{NAMA_NASABAH}}
+      </div>
+      <div class="info-item">
+        <span class="info-label">NIK:</span> {{NIK}}
+      </div>
+      <div class="info-item">
+        <span class="info-label">No. Telepon:</span> {{NO_TELP}}
+      </div>
+      <div class="info-item">
+        <span class="info-label">Email:</span> {{EMAIL}}
+      </div>
+      <div class="info-item">
+        <span class="info-label">Properti:</span> {{NAMA_PROPERTI}} - {{TIPE_UNIT}}
+      </div>
+      <div class="info-item">
+        <span class="info-label">Plafon:</span> {{PLAFON_KREDIT}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Dokumen Identitas -->
+  <div class="section">
+    <div class="section-title">I. DOKUMEN IDENTITAS & KELUARGA</div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th class="checkbox-cell">✓</th>
+          <th class="status-cell">Status</th>
+          <th class="notes-cell">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Fotocopy KTP Pemohon (Suami)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Masih berlaku</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Fotocopy KTP Pasangan (Istri)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Masih berlaku</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Fotocopy Kartu Keluarga (KK)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Terbaru</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Fotocopy Akta Nikah / Cerai</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Sesuai status</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Fotocopy NPWP Pribadi</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Aktif</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 2: Dokumen Penghasilan -->
+  <div class="section">
+    <div class="section-title">II. DOKUMEN PENGHASILAN</div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th class="checkbox-cell">✓</th>
+          <th class="status-cell">Status</th>
+          <th class="notes-cell">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="category-header">
+          <td colspan="5">A. Untuk Karyawan (Fixed Income)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Slip Gaji 3 Bulan Terakhir</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Asli/legalisir</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Surat Keterangan Kerja (SKK)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Kop surat perusahaan</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>SPT Tahunan PPh 21</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">1 tahun terakhir</td>
+        </tr>
+        <tr class="category-header">
+          <td colspan="5">B. Untuk Wiraswasta (Non-Fixed Income)</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>NIB / SIUP / TDP</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Masih berlaku</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Laporan Keuangan 6 Bulan</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Audited/unaudited</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>SPT Tahunan Badan/Pribadi</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">1 tahun terakhir</td>
+        </tr>
+        <tr class="category-header">
+          <td colspan="5">C. Untuk Profesional</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Surat Izin Praktik (SIP)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Dokter, lawyer, dll</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Sertifikat Keahlian</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Sesuai profesi</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 3: Dokumen Keuangan -->
+  <div class="section">
+    <div class="section-title">III. DOKUMEN KEUANGAN</div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th class="checkbox-cell">✓</th>
+          <th class="status-cell">Status</th>
+          <th class="notes-cell">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>14</td>
+          <td>Rekening Koran 3 Bulan Terakhir</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Semua rekening</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Bukti Pembayaran DP</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Transfer/kwitansi</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Daftar Aset & Kewajiban</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Format bank</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 4: Dokumen Properti -->
+  <div class="section">
+    <div class="section-title">IV. DOKUMEN PROPERTI & JAMINAN</div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th class="checkbox-cell">✓</th>
+          <th class="status-cell">Status</th>
+          <th class="notes-cell">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>17</td>
+          <td>Sertifikat Asli Properti (SHM/SHGB)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Diserahkan ke bank</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>IMB (Izin Mendirikan Bangunan)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Asli/fotocopy</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>PBB 5 Tahun Terakhir</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Lunas</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Surat Ukur Tanah</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Dari BPN</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Akta Jual Beli (AJB)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Jika ada</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Foto Properti</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Min. 6 foto</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 5: Dokumen Pendukung -->
+  <div class="section">
+    <div class="section-title">V. DOKUMEN PENDUKUNG LAINNYA</div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Nama Dokumen</th>
+          <th class="checkbox-cell">✓</th>
+          <th class="status-cell">Status</th>
+          <th class="notes-cell">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>23</td>
+          <td>Surat Pernyataan Debitur</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Bermaterai</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Formulir Aplikasi KPR</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Lengkap & TTD</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Surat Kuasa (jika ada)</td>
+          <td class="checkbox-cell"><span class="checkbox"></span></td>
+          <td class="status-cell"></td>
+          <td class="notes-cell">Bermaterai</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Important Note -->
+  <div class="important-note">
+    <strong>⚠️ CATATAN PENTING:</strong> Semua dokumen harus asli atau fotocopy yang sudah dilegalisir. Dokumen yang tidak lengkap atau tidak sesuai akan memperlambat proses persetujuan kredit.
+  </div>
+
+  <!-- Summary Box -->
+  <div class="summary-box">
+    <h4>📊 RINGKASAN KELENGKAPAN BERKAS</h4>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-number">__</div>
+        <div class="summary-label">Total Dokumen</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-number">__</div>
+        <div class="summary-label">Sudah Lengkap</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-number">__</div>
+        <div class="summary-label">Belum Lengkap</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-number">__%</div>
+        <div class="summary-label">Persentase</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature Section -->
+  <div class="signature-section">
+    <div class="signature-box">
+      <h4>Diperiksa Oleh:</h4>
+      <p style="font-size: 9pt; margin-bottom: 5px;">Customer Service</p>
+      <div class="signature-area"></div>
+      <div class="signature-name">_________________</div>
+      <div class="signature-date">Tanggal: _________</div>
+    </div>
+    <div class="signature-box">
+      <h4>Diverifikasi Oleh:</h4>
+      <p style="font-size: 9pt; margin-bottom: 5px;">Account Officer</p>
+      <div class="signature-area"></div>
+      <div class="signature-name">_________________</div>
+      <div class="signature-date">Tanggal: _________</div>
+    </div>
+    <div class="signature-box">
+      <h4>Disetujui Oleh:</h4>
+      <p style="font-size: 9pt; margin-bottom: 5px;">Supervisor KPR</p>
+      <div class="signature-area"></div>
+      <div class="signature-name">_________________</div>
+      <div class="signature-date">Tanggal: _________</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Checklist Kelengkapan Berkas KPR - Dokumen Internal</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>

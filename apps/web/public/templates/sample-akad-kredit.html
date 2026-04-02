@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akad Kredit Pemilikan Rumah</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 18pt;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .header h2 {
+            margin: 5px 0 0 0;
+            font-size: 14pt;
+            font-weight: normal;
+        }
+        
+        .content {
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        
+        .signature-section {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .signature-box {
+            width: 45%;
+            text-align: center;
+        }
+        
+        .signature-line {
+            margin-top: 80px;
+            border-top: 1px solid #000;
+            padding-top: 5px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 10pt;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Akad Kredit Pemilikan Rumah (KPR)</h1>
+        <h2>Perjanjian Kredit Properti</h2>
+    </div>
+    
+    <div class="content">
+        <p>Pada hari ini, <span class="bold">{{TANGGAL}}</span>, telah dibuat dan ditandatangani Akad Kredit Pemilikan Rumah antara:</p>
+        
+        <div class="section">
+            <div class="section-title">PIHAK PERTAMA (PEMBERI KREDIT)</div>
+            <table>
+                <tr>
+                    <td width="30%">Nama Bank</td>
+                    <td width="5%">:</td>
+                    <td><span class="bold">{{BANK}}</span></td>
+                </tr>
+                <tr>
+                    <td>Dalam hal ini diwakili oleh</td>
+                    <td>:</td>
+                    <td>Kepala Cabang / Pejabat yang berwenang</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">PIHAK KEDUA (PENERIMA KREDIT)</div>
+            <table>
+                <tr>
+                    <td width="30%">Nama Lengkap</td>
+                    <td width="5%">:</td>
+                    <td><span class="bold">{{NAMA_NASABAH}}</span></td>
+                </tr>
+                <tr>
+                    <td>NIK</td>
+                    <td>:</td>
+                    <td><span class="bold">{{NIK}}</span></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>:</td>
+                    <td>{{ALAMAT}}</td>
+                </tr>
+                <tr>
+                    <td>No. Telepon</td>
+                    <td>:</td>
+                    <td>{{NO_TELP}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td>{{EMAIL}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">OBJEK KREDIT</div>
+            <table>
+                <tr>
+                    <td width="30%">Nama Properti</td>
+                    <td width="5%">:</td>
+                    <td><span class="bold">{{NAMA_PROPERTI}}</span></td>
+                </tr>
+                <tr>
+                    <td>Tipe Unit</td>
+                    <td>:</td>
+                    <td>{{TIPE_UNIT}}</td>
+                </tr>
+                <tr>
+                    <td>Blok / Nomor</td>
+                    <td>:</td>
+                    <td>{{BLOK}} / {{NOMOR_UNIT}}</td>
+                </tr>
+                <tr>
+                    <td>Luas Tanah</td>
+                    <td>:</td>
+                    <td>{{LUAS_TANAH}} m²</td>
+                </tr>
+                <tr>
+                    <td>Luas Bangunan</td>
+                    <td>:</td>
+                    <td>{{LUAS_BANGUNAN}} m²</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">KETENTUAN KREDIT</div>
+            <table>
+                <tr>
+                    <td width="30%">Harga Jual Properti</td>
+                    <td width="5%">:</td>
+                    <td><span class="bold">{{HARGA_JUAL}}</span></td>
+                </tr>
+                <tr>
+                    <td>Uang Muka (DP)</td>
+                    <td>:</td>
+                    <td><span class="bold">{{DP}}</span></td>
+                </tr>
+                <tr>
+                    <td>Plafon Kredit</td>
+                    <td>:</td>
+                    <td><span class="bold">{{HARGA_PROPERTI}}</span></td>
+                </tr>
+                <tr>
+                    <td>Jangka Waktu</td>
+                    <td>:</td>
+                    <td><span class="bold">{{TENOR}} Bulan</span></td>
+                </tr>
+                <tr>
+                    <td>Cicilan per Bulan</td>
+                    <td>:</td>
+                    <td><span class="bold">{{CICILAN}}</span></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Akad</td>
+                    <td>:</td>
+                    <td>{{TANGGAL_AKAD}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <p><span class="bold">PASAL 1 - OBJEK PERJANJIAN</span></p>
+            <p>Pihak Pertama dengan ini memberikan fasilitas kredit kepada Pihak Kedua untuk pembelian properti sebagaimana disebutkan di atas dengan ketentuan dan syarat yang telah disepakati bersama.</p>
+        </div>
+        
+        <div class="section">
+            <p><span class="bold">PASAL 2 - KEWAJIBAN PIHAK KEDUA</span></p>
+            <p>Pihak Kedua berkewajiban untuk:</p>
+            <ol>
+                <li>Membayar cicilan kredit setiap bulan tepat waktu</li>
+                <li>Menjaga kondisi properti yang menjadi objek kredit</li>
+                <li>Mengasuransikan properti sesuai ketentuan yang berlaku</li>
+                <li>Tidak mengalihkan hak atas properti tanpa persetujuan Pihak Pertama</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <p><span class="bold">PASAL 3 - HAK PIHAK PERTAMA</span></p>
+            <p>Pihak Pertama berhak untuk melakukan pemeriksaan terhadap objek kredit dan melakukan tindakan hukum apabila Pihak Kedua melakukan wanprestasi.</p>
+        </div>
+    </div>
+    
+    <div class="signature-section">
+        <div class="signature-box">
+            <p><span class="bold">PIHAK PERTAMA</span></p>
+            <p>{{BANK}}</p>
+            <div class="signature-line">
+                <p>(_______________________)</p>
+                <p>Kepala Cabang</p>
+            </div>
+        </div>
+        
+        <div class="signature-box">
+            <p><span class="bold">PIHAK KEDUA</span></p>
+            <p>Debitur</p>
+            <div class="signature-line">
+                <p>(_______________________)</p>
+                <p>{{NAMA_NASABAH}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Dokumen ini dibuat secara sah dan mengikat kedua belah pihak</p>
+        <p>Tanggal Cetak: {{TANGGAL}}</p>
+    </div>
+</body>
+</html>

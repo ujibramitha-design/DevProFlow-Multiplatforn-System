@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pra-Akad BTN V3 - Surat Pernyataan Debitur</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+      line-height: 1.8;
+      color: #000;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px double #000;
+    }
+    
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .header h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-decoration: underline;
+    }
+    
+    .header p {
+      font-size: 11pt;
+      margin: 3px 0;
+    }
+    
+    .doc-number {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 11pt;
+    }
+    
+    .content {
+      text-align: justify;
+      margin: 20px 0;
+    }
+    
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    .data-section {
+      margin: 25px 0;
+      padding: 15px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    .data-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .data-label {
+      width: 200px;
+      font-weight: bold;
+    }
+    
+    .data-value {
+      flex: 1;
+      border-bottom: 1px dotted #999;
+    }
+    
+    .statement-list {
+      margin: 20px 0;
+      counter-reset: statement-counter;
+    }
+    
+    .statement-item {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+      text-align: justify;
+    }
+    
+    .statement-item::before {
+      counter-increment: statement-counter;
+      content: counter(statement-counter) ".";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    
+    .signature-section {
+      margin-top: 60px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .signature-box {
+      width: 300px;
+      text-align: center;
+    }
+    
+    .signature-box p {
+      margin-bottom: 10px;
+    }
+    
+    .stamp-area {
+      width: 200px;
+      height: 150px;
+      border: 2px dashed #999;
+      margin: 15px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 10pt;
+      flex-direction: column;
+    }
+    
+    .signature-line {
+      border-top: 1px solid #000;
+      padding-top: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+      font-size: 10pt;
+      color: #666;
+      text-align: center;
+    }
+    
+    .materai-box {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #e74c3c;
+      margin: 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e74c3c;
+      font-size: 9pt;
+      font-weight: bold;
+      text-align: center;
+      transform: rotate(-15deg);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>PT Bank Tabungan Negara (Persero) Tbk</h1>
+    <h2>SURAT PERNYATAAN DEBITUR</h2>
+    <p>Pra-Akad Kredit Pemilikan Rumah (KPR)</p>
+    <p>Dokumen Versi 3 - Tahun 2026</p>
+  </div>
+
+  <!-- Document Number -->
+  <div class="doc-number">
+    <strong>No. Surat:</strong> BTN/SP-DEBITUR/{{TANGGAL}}/{{NIK}}
+  </div>
+
+  <!-- Opening -->
+  <div class="content">
+    <p>Yang bertanda tangan di bawah ini:</p>
+  </div>
+
+  <!-- Data Section -->
+  <div class="data-section">
+    <div class="data-row">
+      <div class="data-label">Nama Lengkap</div>
+      <div class="data-value">{{NAMA_NASABAH}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">NIK</div>
+      <div class="data-value">{{NIK}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">Tempat, Tanggal Lahir</div>
+      <div class="data-value">{{TEMPAT_LAHIR}}, {{TANGGAL_LAHIR}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">Alamat</div>
+      <div class="data-value">{{ALAMAT}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">Pekerjaan</div>
+      <div class="data-value">{{PEKERJAAN}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">No. Telepon</div>
+      <div class="data-value">{{NO_TELP}}</div>
+    </div>
+    <div class="data-row">
+      <div class="data-label">Email</div>
+      <div class="data-value">{{EMAIL}}</div>
+    </div>
+  </div>
+
+  <!-- Statement Content -->
+  <div class="content">
+    <p>Dengan ini menyatakan dengan sebenar-benarnya bahwa:</p>
+  </div>
+
+  <!-- Statement List -->
+  <div class="statement-list">
+    <div class="statement-item">
+      Saya mengajukan permohonan Kredit Pemilikan Rumah (KPR) kepada PT Bank Tabungan Negara (Persero) Tbk untuk pembelian properti <strong>{{NAMA_PROPERTI}}</strong> Tipe <strong>{{TIPE_UNIT}}</strong> Blok <strong>{{BLOK}}</strong> Nomor <strong>{{NOMOR_UNIT}}</strong> dengan nilai kredit sebesar <strong>{{PLAFON_KREDIT}}</strong>.
+    </div>
+    
+    <div class="statement-item">
+      Semua data dan informasi yang saya berikan dalam pengajuan kredit ini adalah benar, lengkap, dan akurat. Saya bertanggung jawab penuh atas kebenaran data tersebut.
+    </div>
+    
+    <div class="statement-item">
+      Saya tidak sedang dalam proses pengajuan kredit di bank atau lembaga keuangan lain untuk properti yang sama.
+    </div>
+    
+    <div class="statement-item">
+      Saya tidak memiliki tunggakan kredit atau masalah keuangan yang dapat mengganggu kemampuan saya dalam membayar cicilan KPR.
+    </div>
+    
+    <div class="statement-item">
+      Saya bersedia untuk dilakukan verifikasi data oleh pihak bank, termasuk namun tidak terbatas pada: verifikasi tempat kerja, verifikasi penghasilan, dan pemeriksaan riwayat kredit di BI Checking/SLIK OJK.
+    </div>
+    
+    <div class="statement-item">
+      Saya memahami dan menyetujui bahwa properti yang saya beli akan dijadikan jaminan (agunan) kredit dan sertifikat asli akan disimpan oleh bank hingga kredit lunas.
+    </div>
+    
+    <div class="statement-item">
+      Saya sanggup membayar uang muka (Down Payment) sebesar <strong>{{DP}}</strong> dan cicilan bulanan sebesar <strong>{{CICILAN}}</strong> selama <strong>{{TENOR}}</strong> bulan sesuai dengan ketentuan yang berlaku.
+    </div>
+    
+    <div class="statement-item">
+      Saya bersedia untuk mengikuti semua ketentuan dan persyaratan yang ditetapkan oleh PT Bank Tabungan Negara (Persero) Tbk dalam perjanjian kredit.
+    </div>
+    
+    <div class="statement-item">
+      Saya memahami bahwa persetujuan kredit sepenuhnya merupakan kewenangan bank berdasarkan hasil analisis kelayakan kredit.
+    </div>
+    
+    <div class="statement-item">
+      Apabila di kemudian hari terbukti bahwa data yang saya berikan tidak benar atau menyesatkan, saya bersedia untuk dikenakan sanksi sesuai dengan ketentuan hukum yang berlaku dan bank berhak untuk membatalkan persetujuan kredit.
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="content">
+    <p>Demikian surat pernyataan ini saya buat dengan sebenar-benarnya dalam keadaan sadar dan tanpa paksaan dari pihak manapun, untuk dapat dipergunakan sebagaimana mestinya.</p>
+  </div>
+
+  <!-- Date and Place -->
+  <div class="content" style="text-align: right; margin-top: 30px;">
+    <p>{{KOTA}}, {{TANGGAL}}</p>
+  </div>
+
+  <!-- Signature Section -->
+  <div class="signature-section">
+    <div class="signature-box">
+      <p style="font-weight: bold;">Yang Membuat Pernyataan,</p>
+      <div class="materai-box">
+        MATERAI<br>Rp 10.000
+      </div>
+      <div class="stamp-area">
+        <div>Tanda Tangan</div>
+        <div style="margin-top: 5px; font-size: 9pt;">(Di atas materai)</div>
+      </div>
+      <div class="signature-line">{{NAMA_NASABAH}}</div>
+      <p style="font-size: 10pt; margin-top: 5px;">NIK: {{NIK}}</p>
+    </div>
+  </div>
+
+  <!-- Witness Section -->
+  <div style="margin-top: 50px;">
+    <p style="font-weight: bold; margin-bottom: 15px;">Mengetahui:</p>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%; text-align: center;">
+        <p style="margin-bottom: 80px;">Saksi 1,</p>
+        <div style="border-top: 1px solid #000; padding-top: 5px; font-weight: bold;">
+          Nama & Tanda Tangan
+        </div>
+      </div>
+      <div style="width: 45%; text-align: center;">
+        <p style="margin-bottom: 80px;">Saksi 2,</p>
+        <div style="border-top: 1px solid #000; padding-top: 5px; font-weight: bold;">
+          Nama & Tanda Tangan
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>PT Bank Tabungan Negara (Persero) Tbk</strong></p>
+    <p>Dokumen ini adalah bagian dari proses Pra-Akad KPR dan bersifat rahasia</p>
+    <p>Dicetak pada: {{TANGGAL}}</p>
+  </div>
+</body>
+</html>
