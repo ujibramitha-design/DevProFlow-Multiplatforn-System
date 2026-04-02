@@ -3,7 +3,7 @@
 import React, { useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from './auth-provider';
-import { LoadingState } from '@/components/design-system';
+import { LoadingState } from '@/components/design-system/components/LoadingState';
 
 interface AuthGuardProps {
   children: ReactNode;
